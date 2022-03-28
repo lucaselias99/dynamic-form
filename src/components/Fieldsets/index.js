@@ -1,15 +1,15 @@
 import { ContainerRadio, ContainerInput, Label } from "./style";
-function Fieldset({ field, register }) {
-  return field.type !== "select" && field.type !== "radio" ? (
-    <ContainerInput style={{ order: field.ordem }}>
-      <Label>{field.name}: </Label>
-      <input {...register(field.name)} type={field.type} />
+function Fieldset({ campo, register }) {
+  return campo.type !== "select" && campo.type !== "radio" ? (
+    <ContainerInput style={{ order: campo.ordem }}>
+      <Label>{campo.name}: </Label>
+      <input {...register(campo.name)} type={campo.type} />
     </ContainerInput>
-  ) : field.type === "select" ? (
-    <div style={{ order: field.ordem }}>
-      <Label>{field.name}: </Label>
-      <select {...register(field.name)}>
-        {field.options.map((option, index) => (
+  ) : campo.type === "select" ? (
+    <div style={{ order: campo.ordem }}>
+      <Label>{campo.name}: </Label>
+      <select {...register(campo.name)}>
+        {campo.options.map((option, index) => (
           <option value={option.value} key={index}>
             {option.text}
           </option>
@@ -17,15 +17,15 @@ function Fieldset({ field, register }) {
       </select>
     </div>
   ) : (
-    <div style={{ order: field.ordem }}>
-      <Label>{field.name}: </Label>
-      {field.options.map((option, index) => (
+    <div style={{ order: campo.ordem }}>
+      <Label>{campo.name}: </Label>
+      {campo.options.map((option, index) => (
         <ContainerRadio key={index}>
           <input
-            name={field.name}
+            name={campo.name}
             value={option.value}
-            type={field.type}
-            {...register(field.name)}
+            type={campo.type}
+            {...register(campo.name)}
           />
           <Label>{option.text}</Label>
         </ContainerRadio>
